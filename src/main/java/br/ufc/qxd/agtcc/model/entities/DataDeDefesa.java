@@ -5,12 +5,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -64,14 +62,6 @@ public class DataDeDefesa implements Serializable {
 		this.matriculas = matriculas;
 	}
 
-	public LocalDeDefesa getLocalDeDefesa() {
-		return localDeDefesa;
-	}
-
-	public void setLocalDeDefesa(LocalDeDefesa localDeDefesa) {
-		this.localDeDefesa = localDeDefesa;
-	}
-
 	public Date getHoraSugerida() {
 		return horaSugerida;
 	}
@@ -95,7 +85,6 @@ public class DataDeDefesa implements Serializable {
 		result = prime * result + ((dataSugerida == null) ? 0 : dataSugerida.hashCode());
 		result = prime * result + ((horaSugerida == null) ? 0 : horaSugerida.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((localDeDefesa == null) ? 0 : localDeDefesa.hashCode());
 		result = prime * result + ((matriculas == null) ? 0 : matriculas.hashCode());
 		result = prime * result + ((orientadores == null) ? 0 : orientadores.hashCode());
 		return result;
@@ -124,11 +113,6 @@ public class DataDeDefesa implements Serializable {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (localDeDefesa == null) {
-			if (other.localDeDefesa != null)
-				return false;
-		} else if (!localDeDefesa.equals(other.localDeDefesa))
 			return false;
 		if (matriculas == null) {
 			if (other.matriculas != null)

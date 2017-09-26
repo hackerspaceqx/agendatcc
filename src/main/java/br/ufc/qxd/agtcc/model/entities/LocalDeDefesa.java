@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class LocalDeDefesa implements Serializable {
@@ -46,14 +45,6 @@ public class LocalDeDefesa implements Serializable {
 		this.nomeDolocal = nomeDolocal;
 	}
 
-	public Curso getCurso() {
-		return curso;
-	}
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
-
 	public List<DataDeDefesa> getDatasDeDefesa() {
 		return datasDeDefesa;
 	}
@@ -66,7 +57,6 @@ public class LocalDeDefesa implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((curso == null) ? 0 : curso.hashCode());
 		result = prime * result + ((datasDeDefesa == null) ? 0 : datasDeDefesa.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nomeDolocal == null) ? 0 : nomeDolocal.hashCode());
@@ -82,11 +72,6 @@ public class LocalDeDefesa implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		LocalDeDefesa other = (LocalDeDefesa) obj;
-		if (curso == null) {
-			if (other.curso != null)
-				return false;
-		} else if (!curso.equals(other.curso))
-			return false;
 		if (datasDeDefesa == null) {
 			if (other.datasDeDefesa != null)
 				return false;

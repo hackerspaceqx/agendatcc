@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -49,22 +48,6 @@ public class Defesa implements Serializable {
 		this.nomeDolocal = nomeDolocal;
 	}
 
-	public Matricula getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(Matricula matricula) {
-		this.matricula = matricula;
-	}
-
-	public Curso getCurso() {
-		return curso;
-	}
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
-
 	public Date getDataDefesa() {
 		return dataDefesa;
 	}
@@ -89,11 +72,9 @@ public class Defesa implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((curso == null) ? 0 : curso.hashCode());
 		result = prime * result + ((dataDefesa == null) ? 0 : dataDefesa.hashCode());
 		result = prime * result + ((horaDefesa == null) ? 0 : horaDefesa.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
 		result = prime * result + ((nomeDolocal == null) ? 0 : nomeDolocal.hashCode());
 		return result;
 	}
@@ -107,11 +88,6 @@ public class Defesa implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Defesa other = (Defesa) obj;
-		if (curso == null) {
-			if (other.curso != null)
-				return false;
-		} else if (!curso.equals(other.curso))
-			return false;
 		if (dataDefesa == null) {
 			if (other.dataDefesa != null)
 				return false;
@@ -126,11 +102,6 @@ public class Defesa implements Serializable {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (matricula == null) {
-			if (other.matricula != null)
-				return false;
-		} else if (!matricula.equals(other.matricula))
 			return false;
 		if (nomeDolocal == null) {
 			if (other.nomeDolocal != null)

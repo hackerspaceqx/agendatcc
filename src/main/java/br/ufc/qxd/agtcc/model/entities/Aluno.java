@@ -67,12 +67,12 @@ public class Aluno implements Serializable {
 		this.id = id;
 	}
 
-	public List<Matricula> getMatriculas() {
-		return matriculas;
+	public Matricula getMatricula() {
+		return matricula;
 	}
 
-	public void setMatriculas(List<Matricula> matriculas) {
-		this.matriculas = matriculas;
+	public void setMatricula(Matricula matricula) {
+		this.matricula = matricula;
 	}
 
 	public Nacionalidade getNacionalidade() {
@@ -155,7 +155,7 @@ public class Aluno implements Serializable {
 		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((identidade == null) ? 0 : identidade.hashCode());
-		result = prime * result + ((matriculas == null) ? 0 : matriculas.hashCode());
+		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
 		result = prime * result + ((nacionalidade == null) ? 0 : nacionalidade.hashCode());
 		result = prime * result + ((nomeSocial == null) ? 0 : nomeSocial.hashCode());
 		result = prime * result + ((orgaoExpedidor == null) ? 0 : orgaoExpedidor.hashCode());
@@ -201,11 +201,11 @@ public class Aluno implements Serializable {
 		} else if (!identidade.equals(other.identidade)) {
 			return false;
 		}
-		if (matriculas == null) {
-			if (other.matriculas != null) {
+		if (matricula == null) {
+			if (other.matricula != null) {
 				return false;
 			}
-		} else if (!matriculas.equals(other.matriculas)) {
+		} else if (!matricula.equals(other.matricula)) {
 			return false;
 		}
 		if (nacionalidade != other.nacionalidade) {
