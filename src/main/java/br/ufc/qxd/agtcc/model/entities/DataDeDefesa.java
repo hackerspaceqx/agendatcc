@@ -25,8 +25,8 @@ public class DataDeDefesa implements Serializable {
 	@OneToMany
 	private List<Professor> orientadores;
 
-	@OneToMany
-	private List<Matricula> matriculas;
+//	@OneToMany
+//	private List<Matricula> matriculas;
 
 	@Temporal(TemporalType.TIME)
 	@Column(name = "hora_sugerida")
@@ -54,13 +54,13 @@ public class DataDeDefesa implements Serializable {
 		this.orientadores = orientadores;
 	}
 
-	public List<Matricula> getMatriculas() {
-		return matriculas;
-	}
-
-	public void setMatriculas(List<Matricula> matriculas) {
-		this.matriculas = matriculas;
-	}
+//	public List<Matricula> getMatriculas() {
+//		return matriculas;
+//	}
+//
+//	public void setMatriculas(List<Matricula> matriculas) {
+//		this.matriculas = matriculas;
+//	}
 
 	public Date getHoraSugerida() {
 		return horaSugerida;
@@ -85,7 +85,7 @@ public class DataDeDefesa implements Serializable {
 		result = prime * result + ((dataSugerida == null) ? 0 : dataSugerida.hashCode());
 		result = prime * result + ((horaSugerida == null) ? 0 : horaSugerida.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((matriculas == null) ? 0 : matriculas.hashCode());
+//		result = prime * result + ((matriculas == null) ? 0 : matriculas.hashCode());
 		result = prime * result + ((orientadores == null) ? 0 : orientadores.hashCode());
 		return result;
 	}
@@ -114,11 +114,11 @@ public class DataDeDefesa implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (matriculas == null) {
-			if (other.matriculas != null)
-				return false;
-		} else if (!matriculas.equals(other.matriculas))
-			return false;
+//		if (matriculas == null) {
+//			if (other.matriculas != null)
+//				return false;
+//		} else if (!matriculas.equals(other.matriculas))
+//			return false;
 		if (orientadores == null) {
 			if (other.orientadores != null)
 				return false;

@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<div th:fragment="header-css">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link
+		th:href="@{http://fonts.googleapis.com/icon?family=Material+Icons}"
+		rel="stylesheet" />
+	<link type="text/css" rel="stylesheet"
+		th:href="@{/materialize/css/materialize.min.css}"
+		media="screen,projection" />
+
+	<script type="text/javascript"
+		th:src="@{https://code.jquery.com/jquery-2.1.1.min.js}"></script>
+	<script th:src="@{/materialize/js/materialize.min.js}"></script>
+
+</div>
+</head>
+<body>
+
+
+	<div th:fragment="header">
+		<!-- this is header -->
+		<nav class="black">
+
+			<div class="nav-wrapper">
+				<a th:href="@{/home}" class="brand-logo center"> <i
+					class="material-icons">class</i>Agenda TCC
+				</a>
+			</div>
+		</nav>
+	</div>
+
+
+
+
+
+
+</body>
+</html>

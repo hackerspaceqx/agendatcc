@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+</head>
+<body>
+	<div th:fragment="footer">
+
+
+		<footer class="page-footer black">
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<!-- this is footer -->
+						<span sec:authorize="isAuthenticated()"> | Usuario Logado:
+							<span sec:authentication="name"></span> | <br /> | Tipo de usuario:
+							<span sec:authentication="principal.authorities"></span> | <br />
+						<a th:href="@{/logout}">Desconectar</a>
+						</span>
+					</div>
+					<div class="col l4 offset-l2 s12">
+						<h5 class="white-text">Equipe:</h5>
+						<ul>
+							<li><a class="grey-text text-lighten-3"
+								th:href="@{https://github.com/hackerspaceqx/agendatcc/graphs/contributors}">Github/Contributors</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer-copyright center">
+				<div class="container">&copy; 2017 Todos os direitos reservados.</div>
+			</div>
+		</footer>
+
+
+
+	</div>
+</body>
+</html>
