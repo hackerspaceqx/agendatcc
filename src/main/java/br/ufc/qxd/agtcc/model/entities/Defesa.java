@@ -20,6 +20,7 @@ public class Defesa implements Serializable {
 	@GeneratedValue
 	private Long id;
 
+    @Column
 	private String nomeDolocal;
 
 	@Temporal(TemporalType.DATE)

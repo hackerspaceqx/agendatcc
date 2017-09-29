@@ -4,11 +4,12 @@ package br.ufc.qxd.agtcc.model.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -20,14 +21,13 @@ public class Matricula implements Serializable {
 	@GeneratedValue
 	private Long id;
 
+	@Column(nullable = false)
+	@NotNull
 	private String matricula;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "aluno_id", referencedColumnName = "id")
-	private Aluno aluno;
-
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "curso_id", referencedColumnName = "id")
+	@Column(nullable = false)
+	@NotNull
+	@OneToOne
 	private Curso curso;
 
 	public Matricula() {}
@@ -48,14 +48,6 @@ public class Matricula implements Serializable {
 		this.matricula = matricula;
 	}
 
-	public Aluno getAluno() {
-		return aluno;
-	}
-
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
-	}
-
 	public Curso getCurso() {
 		return curso;
 	}
@@ -69,7 +61,6 @@ public class Matricula implements Serializable {
 		int hash = 3;
 		hash = 23 * hash + Objects.hashCode(this.id);
 		hash = 23 * hash + Objects.hashCode(this.matricula);
-		hash = 23 * hash + Objects.hashCode(this.aluno);
 		hash = 23 * hash + Objects.hashCode(this.curso);
 		return hash;
 	}
@@ -90,9 +81,6 @@ public class Matricula implements Serializable {
 			return false;
 		}
 		if (!Objects.equals(this.id, other.id)) {
-			return false;
-		}
-		if (!Objects.equals(this.aluno, other.aluno)) {
 			return false;
 		}
 		if (!Objects.equals(this.curso, other.curso)) {

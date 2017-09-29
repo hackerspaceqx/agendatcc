@@ -21,7 +21,8 @@ public class DataDeDefesa implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
-
+	
+	@Column
 	@OneToMany
 	private List<Professor> orientadores;
 

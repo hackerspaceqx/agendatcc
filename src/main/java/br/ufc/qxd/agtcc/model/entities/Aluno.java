@@ -1,8 +1,7 @@
 package br.ufc.qxd.agtcc.model.entities;
 
 import java.util.Date;
-
-
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,9 +20,8 @@ public class Aluno implements Serializable {
 	@GeneratedValue
 	private Long id;
 
-	//@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	//@Fetch(FetchMode.SELECT)
 	@OneToOne
+	@NotNull
 	private Matricula matricula;
 
 	@Column
@@ -35,24 +33,31 @@ public class Aluno implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Genero genero;
 
+	@Column
 	private String nomeSocial;
 
+	@Column(unique = true)
+	@NotNull
 	private String identidade;
-
-	private String orgaoExpedidor;
-
-//	private List<String> telefones;
 
 	@Column
 	@NotNull
+	private String orgaoExpedidor;
+
+	@Column
+	private List<String> telefones;
+
+	@Column
 	@Enumerated(EnumType.STRING)
 	private FormaTratamento tratamento;
 
-	@Temporal(TemporalType.DATE)
 	@Column
+	@Temporal(TemporalType.DATE)
 	private Date dataDeNascimento;
 
-	@OneToOne//(cascade = CascadeType.ALL, orphanRemoval = true)
+	@Column
+	@NotNull
+	@OneToOne
 	private Usuario usuario;
 
 	public Aluno() {}
@@ -113,13 +118,13 @@ public class Aluno implements Serializable {
 		this.orgaoExpedidor = orgaoExpedidor;
 	}
 
-//	public List<String> getTelefones() {
-//		return telefones;
-//	}
-//
-//	public void setTelefones(List<String> telefones) {
-//		this.telefones = telefones;
-//	}
+	public List<String> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(List<String> telefones) {
+		this.telefones = telefones;
+	}
 
 	public FormaTratamento getTratamento() {
 		return tratamento;
@@ -157,7 +162,7 @@ public class Aluno implements Serializable {
 		result = prime * result + ((nacionalidade == null) ? 0 : nacionalidade.hashCode());
 		result = prime * result + ((nomeSocial == null) ? 0 : nomeSocial.hashCode());
 		result = prime * result + ((orgaoExpedidor == null) ? 0 : orgaoExpedidor.hashCode());
-//		result = prime * result + ((telefones == null) ? 0 : telefones.hashCode());
+		result = prime * result + ((telefones == null) ? 0 : telefones.hashCode());
 		result = prime * result + ((tratamento == null) ? 0 : tratamento.hashCode());
 		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
 		return result;
@@ -224,13 +229,13 @@ public class Aluno implements Serializable {
 			return false;
 		}
 		
-//		if (telefones == null) {
-//			if (other.telefones != null) {
-//				return false;
-//			}
-//		} else if (!telefones.equals(other.telefones)) {
-//			return false;
-//		}
+		if (telefones == null) {
+			if (other.telefones != null) {
+				return false;
+			}
+		} else if (!telefones.equals(other.telefones)) {
+			return false;
+		}
 		if (tratamento != other.tratamento) {
 			return false;
 		}

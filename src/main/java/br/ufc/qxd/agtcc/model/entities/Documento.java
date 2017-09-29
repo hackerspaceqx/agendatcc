@@ -17,10 +17,13 @@ public class Documento implements Serializable {
 	@GeneratedValue
 	private Long id;
 
+    @Column
 	private String descricao;
-
+    
+    @Column
 	private String nome;
-
+    
+    @Column
 	private String diretorio;
 
 	@Column(name = "tipo_documento")

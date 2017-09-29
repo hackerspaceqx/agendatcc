@@ -3,6 +3,7 @@ package br.ufc.qxd.agtcc.model.entities;
 
 import java.util.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import br.ufc.qxd.agtcc.model.enums.FormaTratamento;
 import br.ufc.qxd.agtcc.model.enums.TitulacaoAcademica;
@@ -18,26 +19,34 @@ public class Professor implements Serializable {
 	@GeneratedValue
 	private Long id;
 
-	@Column(nullable = true)
+	@Column(unique = true, nullable = false)
+	@NotNull
 	private String identidade;
 
-	@Column(nullable = true)
+	@Column(nullable = false)
+	@NotNull
 	private String orgaoExpedidor;
 
 	@Column(name = "titulacao", nullable = false)
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private TitulacaoAcademica titulacaoAcademica;
 
 	@Column(name = "tratamento", nullable = false)
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private FormaTratamento formaTratamento;
 
 	@ManyToMany(mappedBy = "professores")
 	private List<Curso> cursos;
 
+	@Column(nullable = false)
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@NotNull
 	private Usuario usuario;
 	
+	@Column(nullable = false)
+	@NotNull
 	private Matricula matricula;
 
 	public Professor() {}

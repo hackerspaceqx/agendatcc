@@ -15,23 +15,25 @@ public class Curso implements Serializable {
 	@GeneratedValue
 	private Long id;
 
-	@Column(unique = true)
+	@Column(unique = true, nullable = false)
 	private String nome;
 
+	@Column
 	private String descricao;
 
 	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private Boolean ativo;
 
+	@Column
 	private Double mediaDeAprovacao;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataDeInicio;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataDeTermino;
 
 	@ManyToMany

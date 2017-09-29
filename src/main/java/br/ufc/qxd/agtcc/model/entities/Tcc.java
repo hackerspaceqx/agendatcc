@@ -18,19 +18,23 @@ public class Tcc implements Serializable {
     @GeneratedValue
     private Long id;
 
+	@Column
     private String titulo;
 
     @Lob
     @Column(length = 3000)
     private String resumo;
 
+    @Column
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "tcc_palavraschaves")
     private List<String> palavrasChaves = new ArrayList<>();
 
+    @Column
     @OneToOne
     private Aluno aluno;
 
+    @Column    
     @OneToOne
     private Professor orientador;
 
@@ -38,12 +42,15 @@ public class Tcc implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusTcc status;
 
+    @Column
     @OneToOne
     private Defesa defesa;
 
+    @Column
     @OneToMany
     private List<Documento> documentos;
 
+    @Column
     @OneToMany
     private List<Professor> bancaDeDefesa;
 
