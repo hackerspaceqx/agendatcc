@@ -30,11 +30,9 @@ public class Tcc implements Serializable {
     @CollectionTable(name = "tcc_palavraschaves")
     private List<String> palavrasChaves = new ArrayList<>();
 
-    @Column
     @OneToOne
     private Aluno aluno;
 
-    @Column    
     @OneToOne
     private Professor orientador;
 
@@ -42,11 +40,10 @@ public class Tcc implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusTcc status;
 
-    @Column
+
     @OneToOne
     private Defesa defesa;
 
-    @Column
     @OneToMany
     private List<Documento> documentos;
 

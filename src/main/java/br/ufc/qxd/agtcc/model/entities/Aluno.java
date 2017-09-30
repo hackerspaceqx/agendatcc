@@ -43,8 +43,9 @@ public class Aluno implements Serializable {
 	@Column
 	@NotNull
 	private String orgaoExpedidor;
-
+ 
 	@Column
+	@ElementCollection(targetClass=String.class)
 	private List<String> telefones;
 
 	@Column
@@ -55,8 +56,6 @@ public class Aluno implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dataDeNascimento;
 
-	@Column
-	@NotNull
 	@OneToOne
 	private Usuario usuario;
 

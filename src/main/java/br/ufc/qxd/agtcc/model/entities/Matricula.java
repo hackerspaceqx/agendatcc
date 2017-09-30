@@ -25,8 +25,6 @@ public class Matricula implements Serializable {
 	@NotNull
 	private String matricula;
 
-	@Column(nullable = false)
-	@NotNull
 	@OneToOne
 	private Curso curso;
 

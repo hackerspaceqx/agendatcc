@@ -40,13 +40,10 @@ public class Professor implements Serializable {
 	@ManyToMany(mappedBy = "professores")
 	private List<Curso> cursos;
 
-	@Column(nullable = false)
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	@NotNull
 	private Usuario usuario;
 	
-	@Column(nullable = false)
-	@NotNull
+	@OneToOne
 	private Matricula matricula;
 
 	public Professor() {}
