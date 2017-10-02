@@ -28,16 +28,6 @@ public class Usuario implements Serializable {
 
 	@OneToOne
 	private UsuarioPapel papel;
-	
-	@Column(nullable = false)
-	@NotNull
-	private String primeiroNome;
-
-	@Column
-	private String segundoNome;
-
-	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
-	private Boolean ativo;
 
 	@Column(nullable = false)
 	@NotNull
@@ -50,9 +40,9 @@ public class Usuario implements Serializable {
 	@Column(nullable = false)
 	private Date dataDeCadastro;
 
-	@Column(unique = true)
-	private String cpf;
-
+//	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+//	private Boolean ativo;
+	
 	//Construtor
 	public Usuario() {}
 
@@ -82,30 +72,6 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public String getPrimeiroNome() {
-		return primeiroNome;
-	}
-
-	public void setPrimeiroNome(String primeiroNome) {
-		this.primeiroNome = primeiroNome;
-	}
-
-	public String getSegundoNome() {
-		return segundoNome;
-	}
-
-	public void setSegundoNome(String segundoNome) {
-		this.segundoNome = segundoNome;
-	}
-
-	public Boolean getAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -128,14 +94,6 @@ public class Usuario implements Serializable {
 
 	public void setDataDeCadastro(Date dataDeCadastro) {
 		this.dataDeCadastro = dataDeCadastro;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 	
 	public UsuarioPapel getPapel() {

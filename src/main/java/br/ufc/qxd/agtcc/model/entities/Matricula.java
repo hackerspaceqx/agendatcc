@@ -2,6 +2,7 @@ package br.ufc.qxd.agtcc.model.entities;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 
@@ -27,7 +30,15 @@ public class Matricula implements Serializable {
 
 	@OneToOne
 	private Curso curso;
+	
+	@Column
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataDeInicio;
 
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataDeTermino;
+	
 	public Matricula() {}
 	
 	public Long getId() {

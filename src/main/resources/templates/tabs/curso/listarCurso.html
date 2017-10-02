@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header" />
+
+	<div class="container">
+		<div class="row white">
+
+			<h5 class="black-text center">Alunos</h5>
+			<table class="highlight " id="table-admin">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nome</th>
+						<th>Media de Aprovação</th>
+						<th>Descrição</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="curso : ${cursos}">
+						<td th:text="${curso.id}"></td>
+						<td th:text="${curso.nome}"></td>
+						<td th:text="${curso.mediaDeAprovacao}"></td>
+						<td th:text="${curso.descricao}"></td>
+						<td>
+							<a class="btn-floating" th:href="@{${'/curso/editar/'+curso.id}}"> 
+								<i class="material-icons">edit</i>
+							</a> 
+							<a class="btn-floating" th:href="@{${'/curso/remover/'+curso.id}}">
+								<i class="material-icons">delete</i> 
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="fixed-action-btn">
+		<a th:href="@{/curso/cadastrar}"
+			class="btn-floating btn-large waves-effect waves-light red pulse">
+			<i class="material-icons">add</i>
+		</a>
+	</div>
+	<!-- /.container -->
+	<div th:replace="fragments/footer :: footer" />
+
+</body>
+</html>

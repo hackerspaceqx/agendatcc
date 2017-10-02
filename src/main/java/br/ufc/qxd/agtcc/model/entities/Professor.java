@@ -26,6 +26,9 @@ public class Professor implements Serializable {
 	@Column(nullable = false)
 	@NotNull
 	private String orgaoExpedidor;
+	
+	@Column(unique = true)
+	private String cpf;
 
 	@Column(name = "titulacao", nullable = false)
 	@NotNull
@@ -43,8 +46,8 @@ public class Professor implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	private Usuario usuario;
 	
-	@OneToOne
-	private Matricula matricula;
+//	@OneToOne
+//	private Matricula matricula;
 
 	public Professor() {}
 	
@@ -104,14 +107,6 @@ public class Professor implements Serializable {
 		this.usuario = usuario;
 	}	
 
-	public Matricula getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(Matricula matricula) {
-		this.matricula = matricula;
-	}
-
 	@Override
 	public int hashCode() {
 		int hash = 5;
@@ -121,7 +116,6 @@ public class Professor implements Serializable {
 		hash = 71 * hash + Objects.hashCode(this.titulacaoAcademica);
 		hash = 71 * hash + Objects.hashCode(this.formaTratamento);
 		hash = 71 * hash + Objects.hashCode(this.cursos);
-		hash = 71 * hash + Objects.hashCode(this.matricula);
 		hash = 71 * hash + Objects.hashCode(this.usuario);
 		return hash;
 	}
@@ -154,9 +148,6 @@ public class Professor implements Serializable {
 			return false;
 		}
 		if (!Objects.equals(this.cursos, other.cursos)) {
-			return false;
-		}
-		if (!Objects.equals(this.matricula, other.matricula)) {
 			return false;
 		}
 		return Objects.equals(this.usuario, other.usuario);

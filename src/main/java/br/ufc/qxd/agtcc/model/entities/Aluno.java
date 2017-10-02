@@ -20,10 +20,24 @@ public class Aluno implements Serializable {
 	@GeneratedValue
 	private Long id;
 
-	@OneToOne
+	@Column(nullable = false)
 	@NotNull
-	private Matricula matricula;
+	private String primeiroNome;
 
+	@Column
+	private String segundoNome;
+	
+	@Column
+	private String nomeSocial;
+	
+	@Column
+	@Temporal(TemporalType.DATE)
+	private Date dataDeNascimento;
+	
+	@Column
+	@ElementCollection(targetClass=String.class)
+	private List<String> telefones;
+	
 	@Column
 	@Enumerated(EnumType.STRING)
 	private Nacionalidade nacionalidade;
@@ -34,7 +48,9 @@ public class Aluno implements Serializable {
 	private Genero genero;
 
 	@Column
-	private String nomeSocial;
+	@Enumerated(EnumType.STRING)
+	private FormaTratamento tratamento;
+
 
 	@Column(unique = true)
 	@NotNull
@@ -43,19 +59,13 @@ public class Aluno implements Serializable {
 	@Column
 	@NotNull
 	private String orgaoExpedidor;
- 
-	@Column
-	@ElementCollection(targetClass=String.class)
-	private List<String> telefones;
 
-	@Column
-	@Enumerated(EnumType.STRING)
-	private FormaTratamento tratamento;
-
-	@Column
-	@Temporal(TemporalType.DATE)
-	private Date dataDeNascimento;
-
+	@Column(unique = true)
+	private String cpf;
+	
+	@OneToOne
+	private Matricula matricula;
+	
 	@OneToOne
 	private Usuario usuario;
 

@@ -11,20 +11,45 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufc.qxd.agtcc.model.entities.Aluno;
+import br.ufc.qxd.agtcc.model.enums.FormaTratamento;
+import br.ufc.qxd.agtcc.model.enums.Genero;
+import br.ufc.qxd.agtcc.model.enums.Nacionalidade;
 import br.ufc.qxd.agtcc.service.interfaces.IAlunoService;
+import br.ufc.qxd.agtcc.service.interfaces.ICursoService;
+import br.ufc.qxd.agtcc.service.interfaces.IUsuarioPapelService;
 
 @Controller
+@RequestMapping(path="/aluno/")
 public class AlunoController {
 	
 	@Autowired
 	IAlunoService alunoService;
+	
+	@Autowired
+	IUsuarioPapelService usuarioPapelService;
+	
+	@Autowired
+	ICursoService cursoService;
+	
+	
+	@RequestMapping(path="/")
+	public String index(){
+		return "redirect:/aluno/listar";
+	}
+	
 	
 	//Chamanda da page
 	@RequestMapping(path="/cadastrar", method=RequestMethod.GET)
 	public 	String cadastrar(Model model){
 		Aluno aluno = new Aluno();
 		model.addAttribute("aluno", aluno);
-		return "cadastrarUsuario";
+		model.addAttribute("papeis", usuarioPapelService.findAll());
+		model.addAttribute("cursos", cursoService.findAll());
+		model.addAttribute("generos", Genero.values());
+		model.addAttribute("nacionalidades", Nacionalidade.values());
+		model.addAttribute("formasDeTratamento", FormaTratamento.values());
+		
+		return "/tabs/aluno/cadastrarAluno";
 	}
 
 	//Chamanda do botao cadastrar
@@ -71,8 +96,8 @@ public class AlunoController {
 		
 	//PAGE
 	@RequestMapping(path="/listar", method=RequestMethod.GET)
-	public ModelAndView todos(){
-		ModelAndView model = new ModelAndView("listarAlunos");
+	public ModelAndView listar(){
+		ModelAndView model = new ModelAndView("tabs/aluno/listarAluno");
 		model.addObject("alunos", alunoService.findAll());
 		return model;
 	}
