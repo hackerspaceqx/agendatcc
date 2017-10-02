@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufc.qxd.agtcc.model.entities.Aluno;
+import br.ufc.qxd.agtcc.model.entities.Matricula;
 import br.ufc.qxd.agtcc.model.enums.FormaTratamento;
 import br.ufc.qxd.agtcc.model.enums.Genero;
 import br.ufc.qxd.agtcc.model.enums.Nacionalidade;
@@ -42,7 +43,9 @@ public class AlunoController {
 	@RequestMapping(path="/cadastrar", method=RequestMethod.GET)
 	public 	String cadastrar(Model model){
 		Aluno aluno = new Aluno();
+		Matricula matricula = new Matricula();
 		model.addAttribute("aluno", aluno);
+		model.addAttribute("matricula", matricula);
 		model.addAttribute("papeis", usuarioPapelService.findAll());
 		model.addAttribute("cursos", cursoService.findAll());
 		model.addAttribute("generos", Genero.values());
