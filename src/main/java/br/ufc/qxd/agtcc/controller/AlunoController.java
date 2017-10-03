@@ -1,5 +1,11 @@
 package br.ufc.qxd.agtcc.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,7 +59,7 @@ public class AlunoController {
 
 	//Chamanda do botao cadastrar
 	@RequestMapping(path={"/cadastrar"}, method=RequestMethod.POST)
-	public String cadastrar_post(Aluno aluno, BindingResult result, RedirectAttributes attributes){
+	public String cadastrar_post(Aluno aluno,HttpServletRequest request, BindingResult result, RedirectAttributes attributes) throws ParseException{
 		if (result.hasErrors()){
 			attributes.addAttribute("erro", result.getAllErrors().get(0));
 			return "redirect:/aluno/cadastrar";
@@ -62,6 +68,10 @@ public class AlunoController {
 //		Matricula novaMatricula = matriculaService.save(matricula);
 //		aluno.setMatricula(novaMatricula);
 
+		String data = request.getParameter("nascimento");
+		SimpleDateFormat formatOriginal = new SimpleDateFormat("yyyy-MM-dd");
+		Date dataNasc = formatOriginal.parse(data);
+		aluno.setDataDeNascimento(dataNasc);
 		alunoService.save(aluno);
 		
 		attributes.addFlashAttribute("mensagemSucesso", "Aluno cadastrado com sucesso!");
@@ -84,11 +94,16 @@ public class AlunoController {
 	
 	//Metodo do botao
 	@RequestMapping(path={"/editar/{id}"}, method=RequestMethod.POST)
-	public String editar_post(@PathVariable("id") Long id, Aluno aluno, BindingResult result, RedirectAttributes attributes){
+	public String editar_post(@PathVariable("id") Long id, Aluno aluno, HttpServletRequest request,BindingResult result, RedirectAttributes attributes) throws ParseException{
 		if (result.hasErrors()){
 			attributes.addAttribute("erro", result.getAllErrors().get(0));
 			return "redirect:/aluno/editar/"+(aluno.getId());
 		}
+		String data = request.getParameter("nascimento");
+		SimpleDateFormat formatOriginal = new SimpleDateFormat("yyyy-MM-dd");
+		Date dataNasc = formatOriginal.parse(data);
+		aluno.setDataDeNascimento(dataNasc);
+		
 		alunoService.save(aluno);
 		attributes.addFlashAttribute("mensagemSucesso", "Aluno editado com sucesso!");
 		return "redirect:/aluno/";

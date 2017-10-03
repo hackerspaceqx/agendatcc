@@ -56,9 +56,12 @@
 								<label for="nomeSocial" data-error="Nome Invalido" data-sucess="Nome Valido">Nome Social</label>
 							</div>
 
+							<div class="input-field col s12">								
+								<label for="nascimento" data-error="Data Invalida" data-sucess="Data Valida">Data de Nascimento</label>								
+							</div>
+
 							<div class="input-field col s12">	
-								<input id="dataNascimento" name="dataNascimento" type="text" class="validate" th:value="${currentAluno.dataDeNascimento}"/>
-								<label for="dataNascimento" data-error="Data Invalida" data-sucess="Data Valida">Data de Nascimento</label>								
+								<input id="nascimento" name="nascimento" type="date" class="validate" th:value="${currentAluno.dataDeNascimento}"/>
 							</div>
 
 							<div class="input-field col s12">
@@ -73,11 +76,11 @@
 							</div>
 
 							<div class="input-field col s12">
-								<select name="formaDeTratamento" th:object="${formaDeTratamento}">
-									<option th:each="formaDeTratamento : ${formasDeTratamento}"
-											th:value="${formaDeTratamento}"
-											th:text="${formaDeTratamento}"
-											th:selected="${formaDeTratamento} == ${currentAluno.tratamento}">
+								<select name="tratamento" th:object="${formaDeTratamento}">
+									<option th:each="tratamento : ${formasDeTratamento}"
+											th:value="${tratamento}"
+											th:text="${tratamento}"
+											th:selected="${tratamento} == ${currentAluno.tratamento}">
 									</option>
 								</select>
 								<label>Forma de Tratamento</label>

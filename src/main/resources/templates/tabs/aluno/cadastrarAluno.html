@@ -54,10 +54,10 @@
 							</div>
 
 							<div class="input-field col s12">	
-								<label for="dataNascimento" data-error="Data Invalida" data-sucess="Data Valida">Data de Nascimento</label>
+								<label for="nascimento" data-error="Data Invalida" data-sucess="Data Valida">Data de Nascimento</label>
 							</div>
 							<div class="input-field col s12">
-								<input id="dataNascimento" name="dataNascimento" type="date" class="validate" />
+								<input id="nascimento" name="nascimento" type="date" class="validate" />
 							</div>
 
 							<div class="input-field col s12">
@@ -71,10 +71,10 @@
 							</div>
 
 							<div class="input-field col s12">
-								<select name="formaDeTratamento" th:object="${formaDeTratamento}">
-									<option th:each="formaDeTratamento : ${formasDeTratamento}"
-											th:value="${formaDeTratamento}"
-											th:text="${formaDeTratamento}">
+								<select name="tratamento" th:object="${formaDeTratamento}">
+									<option th:each="tratamento : ${formasDeTratamento}"
+											th:value="${tratamento}"
+											th:text="${tratamento}">
 									</option>
 								</select>
 								<label>Forma de Tratamento</label>
