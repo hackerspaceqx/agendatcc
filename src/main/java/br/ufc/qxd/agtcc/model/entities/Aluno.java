@@ -51,7 +51,6 @@ public class Aluno implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private FormaTratamento tratamento;
 
-
 	@Column(unique = true)
 	@NotNull
 	private String identidade;
@@ -63,14 +62,20 @@ public class Aluno implements Serializable {
 	@Column(unique = true)
 	private String cpf;
 	
+	@Column(nullable = false)
+	@NotNull
+	private String matricula;
+
 	@OneToOne
-	private Matricula matricula;
+	private Curso curso;
 	
 	@OneToOne
 	private Usuario usuario;
 
 	public Aluno() {}
 	
+	
+
 	public Long getId() {
 		return id;
 	}
@@ -79,12 +84,44 @@ public class Aluno implements Serializable {
 		this.id = id;
 	}
 
-	public Matricula getMatricula() {
-		return matricula;
+	public String getPrimeiroNome() {
+		return primeiroNome;
 	}
 
-	public void setMatricula(Matricula matricula) {
-		this.matricula = matricula;
+	public void setPrimeiroNome(String primeiroNome) {
+		this.primeiroNome = primeiroNome;
+	}
+
+	public String getSegundoNome() {
+		return segundoNome;
+	}
+
+	public void setSegundoNome(String segundoNome) {
+		this.segundoNome = segundoNome;
+	}
+
+	public String getNomeSocial() {
+		return nomeSocial;
+	}
+
+	public void setNomeSocial(String nomeSocial) {
+		this.nomeSocial = nomeSocial;
+	}
+
+	public Date getDataDeNascimento() {
+		return dataDeNascimento;
+	}
+
+	public void setDataDeNascimento(Date dataDeNascimento) {
+		this.dataDeNascimento = dataDeNascimento;
+	}
+
+	public List<String> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(List<String> telefones) {
+		this.telefones = telefones;
 	}
 
 	public Nacionalidade getNacionalidade() {
@@ -103,12 +140,12 @@ public class Aluno implements Serializable {
 		this.genero = genero;
 	}
 
-	public String getNomeSocial() {
-		return nomeSocial;
+	public FormaTratamento getTratamento() {
+		return tratamento;
 	}
 
-	public void setNomeSocial(String nomeSocial) {
-		this.nomeSocial = nomeSocial;
+	public void setTratamento(FormaTratamento tratamento) {
+		this.tratamento = tratamento;
 	}
 
 	public String getIdentidade() {
@@ -127,30 +164,30 @@ public class Aluno implements Serializable {
 		this.orgaoExpedidor = orgaoExpedidor;
 	}
 
-	public List<String> getTelefones() {
-		return telefones;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setTelefones(List<String> telefones) {
-		this.telefones = telefones;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
-	public FormaTratamento getTratamento() {
-		return tratamento;
+	public String getMatricula() {
+		return matricula;
 	}
 
-	public void setTratamento(FormaTratamento tratamento) {
-		this.tratamento = tratamento;
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
 
-	public Date getDataDeNascimento() {
-		return dataDeNascimento;
+	public Curso getCurso() {
+		return curso;
 	}
 
-	public void setDataDeNascimento(Date dataDeNascimento) {
-		this.dataDeNascimento = dataDeNascimento;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
-
+ 
 	public Usuario getUsuario() {
 		return usuario;
 	}

@@ -54,6 +54,11 @@ public class DefaultController {
 		return "redirect:/aluno/";
 	}
 	
+	@GetMapping("/matricula")
+	public String matricula(){
+		return "redirect:/matricula/";
+	}
+	
 	@GetMapping("/curso")
 	public String curso(){
 		return "redirect:/curso/";

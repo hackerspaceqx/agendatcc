@@ -17,8 +17,9 @@
 						<th>Id</th>
 						<th>Nome</th>
 						<th>Sobrenome</th>
-						<th>CPF</th>
-						<th>Matricula</th>
+						<th>Matricula</th>				
+						<th>CPF</th>		
+						<th>Opções</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -26,6 +27,7 @@
 						<td th:text="${aluno.id}"></td>
 						<td th:text="${aluno.primeiroNome}"></td>
 						<td th:text="${aluno.segundoNome}"></td>
+						<td th:text="${aluno.matricula}"></td>
 						<td th:text="${aluno.cpf}"></td>
 						<td><a class="btn-floating"
 							th:href="@{${'/aluno/editar/'+aluno.id}}"><i

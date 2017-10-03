@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufc.qxd.agtcc.model.entities.Aluno;
-import br.ufc.qxd.agtcc.model.entities.Matricula;
 import br.ufc.qxd.agtcc.model.enums.FormaTratamento;
 import br.ufc.qxd.agtcc.model.enums.Genero;
 import br.ufc.qxd.agtcc.model.enums.Nacionalidade;
@@ -32,7 +31,6 @@ public class AlunoController {
 	@Autowired
 	ICursoService cursoService;
 	
-	
 	@RequestMapping(path="/")
 	public String index(){
 		return "redirect:/aluno/listar";
@@ -43,9 +41,7 @@ public class AlunoController {
 	@RequestMapping(path="/cadastrar", method=RequestMethod.GET)
 	public 	String cadastrar(Model model){
 		Aluno aluno = new Aluno();
-		Matricula matricula = new Matricula();
 		model.addAttribute("aluno", aluno);
-		model.addAttribute("matricula", matricula);
 		model.addAttribute("papeis", usuarioPapelService.findAll());
 		model.addAttribute("cursos", cursoService.findAll());
 		model.addAttribute("generos", Genero.values());
@@ -62,7 +58,12 @@ public class AlunoController {
 			attributes.addAttribute("erro", result.getAllErrors().get(0));
 			return "redirect:/aluno/cadastrar";
 		}
+		
+//		Matricula novaMatricula = matriculaService.save(matricula);
+//		aluno.setMatricula(novaMatricula);
+
 		alunoService.save(aluno);
+		
 		attributes.addFlashAttribute("mensagemSucesso", "Aluno cadastrado com sucesso!");
 		return "redirect:/aluno/";
 	}
@@ -71,8 +72,14 @@ public class AlunoController {
 	//PAGE
 	@RequestMapping(path="/editar/{id}", method=RequestMethod.GET)
 	public 	String editar(@PathVariable("id") Long id, Model model){
-		model.addAttribute("currentUser", alunoService.findOne(id));
-		return "editarAluno";
+		model.addAttribute("currentAluno", alunoService.findOne(id));
+		model.addAttribute("cursos", cursoService.findAll());
+		model.addAttribute("papeis", usuarioPapelService.findAll());
+		model.addAttribute("generos", Genero.values());
+		model.addAttribute("nacionalidades", Nacionalidade.values());
+		model.addAttribute("formasDeTratamento", FormaTratamento.values());
+
+		return "/tabs/aluno/editarAluno";
 	}
 	
 	//Metodo do botao

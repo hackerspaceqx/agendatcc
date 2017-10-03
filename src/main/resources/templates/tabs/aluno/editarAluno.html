@@ -15,12 +15,14 @@
  				<div class="card col s8 white z-depth-3">
 	
 					<h5 class="black-text">Cadastrar aluno</h5>
-					<form action="/aluno/cadastrar" method="post" th:object="${aluno}">
+					<form th:action="@{/aluno/editar/}+${currentAluno.id}" method="post" th:object="${aluno}">				
+					
 						<fieldset>
+
 							<legend> Dados da Matricula: </legend>
 
 							<div class="input-field col s12">
-								<input id="matricula" type="text" name="matricula" class="validate" />
+								<input id="matricula" type="text" name="matricula" class="validate" th:value="${currentAluno.matricula}" />
 								<label for="matricula" data-error="Matricula Invalida" data-sucess="Matricula Valida">Matricula</label>
 							</div>
 	
@@ -28,7 +30,8 @@
 								<select name="curso" th:object="${curso}">
 									<option th:each="curso : ${cursos}"
 											th:value="${curso.id}"
-											th:text="${curso.nome}">
+											th:text="${curso.nome}"
+											th:selected="${curso.id} == ${currentAluno.curso.id}">
 										</option>
 								</select>
 								<label>Curso</label>
@@ -39,32 +42,31 @@
 							<legend> Dados do Aluno: </legend>
 
 							<div class="input-field col s12">
-								<input id="primeiroNome" type="text" name="primeiroNome" class="validate" />
+								<input id="primeiroNome" type="text" name="primeiroNome" class="validate" th:value="${currentAluno.primeiroNome}"/>
 								<label for="primeiroNome" data-error="Nome Invalido" data-sucess="Nome Valido">Nome</label>
 							</div>
 
 							<div class="input-field col s12">
-								<input id="segundoNome" type="text" name="segundoNome" class="validate" />
+								<input id="segundoNome" type="text" name="segundoNome" class="validate" th:value="${currentAluno.segundoNome}"/>
 								<label for="segundoNome" data-error="Nome Invalido" data-sucess="Nome Valido">Sobrenome</label>
 							</div>
 							
 							<div class="input-field col s12">
-								<input id="nomeSocial" type="text" name="nomeSocial" class="validate" />
+								<input id="nomeSocial" type="text" name="nomeSocial" class="validate" th:value="${currentAluno.nomeSocial}"/>
 								<label for="nomeSocial" data-error="Nome Invalido" data-sucess="Nome Valido">Nome Social</label>
 							</div>
 
 							<div class="input-field col s12">	
-								<label for="dataNascimento" data-error="Data Invalida" data-sucess="Data Valida">Data de Nascimento</label>
-							</div>
-							<div class="input-field col s12">
-								<input id="dataNascimento" name="dataNascimento" type="date" class="validate" />
+								<input id="dataNascimento" name="dataNascimento" type="text" class="validate" th:value="${currentAluno.dataDeNascimento}"/>
+								<label for="dataNascimento" data-error="Data Invalida" data-sucess="Data Valida">Data de Nascimento</label>								
 							</div>
 
 							<div class="input-field col s12">
 								<select name="genero" th:object="${genero}">
 									<option th:each="genero : ${generos}"
 											th:value="${genero}"
-											th:text="${genero}">
+											th:text="${genero}"
+											th:selected="${genero} == ${currentAluno.genero}">
 									</option>
 								</select>
 								<label>Genero</label>
@@ -74,24 +76,25 @@
 								<select name="formaDeTratamento" th:object="${formaDeTratamento}">
 									<option th:each="formaDeTratamento : ${formasDeTratamento}"
 											th:value="${formaDeTratamento}"
-											th:text="${formaDeTratamento}">
+											th:text="${formaDeTratamento}"
+											th:selected="${formaDeTratamento} == ${currentAluno.tratamento}">
 									</option>
 								</select>
 								<label>Forma de Tratamento</label>
 							</div>
 
 							<div class="input-field col s12">
-								<input id="cpf" type="number" name="cpf" class="validate" />
+								<input id="cpf" type="number" name="cpf" class="validate" th:value="${currentAluno.cpf}"/>
 								<label for="cpf" data-error="CPF Invalido" data-sucess="CPF Valido">CPF</label>
 							</div>
 
 							<div class="input-field col s12">
-								<input id="identidade" type="number" name="identidade" class="validate" />
+								<input id="identidade" type="number" name="identidade" class="validate" th:value="${currentAluno.identidade}"/>
 								<label for="identidade" data-error="RG Invalido" data-sucess="RG Valido">RG</label>
 							</div>
 
 							<div class="input-field col s12">
-								<input id="orgaoExpedidor" type="text" name="orgaoExpedidor" class="validate" />
+								<input id="orgaoExpedidor" type="text" name="orgaoExpedidor" class="validate" th:value="${currentAluno.orgaoExpedidor}"/>
 								<label for="orgaoExpedidor" data-error="Orgao Expeditor Invalido" data-sucess="Orgao Expeditor Valido">Orgão Expeditor</label>
 							</div>
 
@@ -99,7 +102,8 @@
 								<select name="nacionalidade" th:object="${nacionalidade}">
 									<option th:each="nacionalidade : ${nacionalidades}"
 											th:value="${nacionalidade}"
-											th:text="${nacionalidade}">
+											th:text="${nacionalidade}"
+											th:selected="${nacionalidade} == ${currentAluno.nacionalidade}">
 									</option>
 								</select>
 								<label>Nacionalidade</label>
