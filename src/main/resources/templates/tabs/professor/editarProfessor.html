@@ -17,90 +17,73 @@
 
 				<fieldset>
 					<legend>
-						<h5 class="black-text"> Cadastrar aluno </h5>
+						<h5 class="black-text">Editar Professor</h5>
 					</legend>
 
 
-					<form action="/aluno/cadastrar" method="post" th:object="${aluno}">
-						<fieldset>
-							<legend> Dados da Matricula: </legend>
+					<form th:action="@{/professor/editar/}+${currentProfessor.id}"
+						method="post" th:object="${professor}">
 
-							<div class="input-field col s12">
-								<input id="matricula" type="text" name="matricula"
-									class="validate" /> <label for="matricula"
-									data-error="Matricula Invalida" data-sucess="Matricula Valida">Matricula</label>
-							</div>
-
-							<div class="input-field col s12">
-								<select name="curso" th:object="${curso}">
-									<option th:each="curso : ${cursos}" th:value="${curso.id}"
-										th:text="${curso.nome}">
-										</option>
-								</select> <label>Curso</label>
-							</div>
-						</fieldset>
 						<div class="col s12 row"></div>
 						<fieldset>
-							<legend> Dados do Aluno: </legend>
+							<legend> Dados do Professor: </legend>
 
 							<div class="input-field col s12">
 								<input id="primeiroNome" type="text" name="primeiroNome"
-									class="validate" /> <label for="primeiroNome"
+									class="validate" th:value="${currentProfessor.primeiroNome}"/> <label for="primeiroNome"
 									data-error="Nome Invalido" data-sucess="Nome Valido">Nome</label>
 							</div>
 
 							<div class="input-field col s12">
 								<input id="segundoNome" type="text" name="segundoNome"
-									class="validate" /> <label for="segundoNome"
+									class="validate" th:value="${currentProfessor.segundoNome}"/> <label for="segundoNome"
 									data-error="Nome Invalido" data-sucess="Nome Valido">Sobrenome</label>
 							</div>
 
 							<div class="input-field col s12">
-								<input id="nomeSocial" type="text" name="nomeSocial"
-									class="validate" /> <label for="nomeSocial"
-									data-error="Nome Invalido" data-sucess="Nome Valido">Nome
-									Social</label>
-							</div>
-
-							<div class="input-field col s12">
-								<label for="nascimento" data-error="Data Invalida"
-									data-sucess="Data Valida">Data de Nascimento</label>
-							</div>
-							<div class="input-field col s12">
-								<input id="nascimento" name="nascimento" type="date"
-									class="validate" />
+								<select name="titulacaoAcademica"
+									th:object="${titulacaoAcademica}">
+									<option th:each="titulacaoAcademica : ${titulacoesAcademina}"
+										th:value="${titulacaoAcademica}"
+										th:text="${titulacaoAcademica}"
+										th:selected="${titulacaoAcademica} == ${currentProfessor.titulacaoAcademica}">
+									</option>
+								</select> <label>Titulação Academica</label>
 							</div>
 
 							<div class="input-field col s12">
 								<select name="genero" th:object="${genero}">
-									<option th:each="genero : ${generos}" th:value="${genero}"
-										th:text="${genero}">
+									<option th:each="genero : ${generos}" 
+										th:value="${genero}"
+										th:text="${genero}"
+										th:selected="${genero} == ${currentProfessor.genero}">
 									</option>
 								</select> <label>Genero</label>
 							</div>
 
 							<div class="input-field col s12">
-								<select name="tratamento" th:object="${formaDeTratamento}">
+								<select name="tratamento" th:object="${formaTratamento}">
 									<option th:each="tratamento : ${formasDeTratamento}"
-										th:value="${tratamento}" th:text="${tratamento}">
+										th:value="${tratamento}" th:text="${tratamento}"
+										th:selected="${tratamento} == ${currentProfessor.tratamento}">
 									</option>
 								</select> <label>Forma de Tratamento</label>
 							</div>
 
 							<div class="input-field col s12">
-								<input id="cpf" type="number" name="cpf" class="validate" /> <label
+								<input id="cpf" type="number" name="cpf" class="validate" th:value="${currentProfessor.cpf}"/> <label
 									for="cpf" data-error="CPF Invalido" data-sucess="CPF Valido">CPF</label>
 							</div>
 
 							<div class="input-field col s12">
 								<input id="identidade" type="number" name="identidade"
-									class="validate" /> <label for="identidade"
+									class="validate" th:value="${currentProfessor.identidade}"/> <label for="identidade"
 									data-error="RG Invalido" data-sucess="RG Valido">RG</label>
 							</div>
 
 							<div class="input-field col s12">
 								<input id="orgaoExpedidor" type="text" name="orgaoExpedidor"
-									class="validate" /> <label for="orgaoExpedidor"
+									class="validate" th:value="${currentProfessor.orgaoExpedidor}"/> <label for="orgaoExpedidor"
 									data-error="Orgao Expeditor Invalido"
 									data-sucess="Orgao Expeditor Valido">Orgão Expeditor</label>
 							</div>
@@ -108,7 +91,8 @@
 							<div class="input-field col s12">
 								<select name="nacionalidade" th:object="${nacionalidade}">
 									<option th:each="nacionalidade : ${nacionalidades}"
-										th:value="${nacionalidade}" th:text="${nacionalidade}">
+										th:value="${nacionalidade}" th:text="${nacionalidade}"
+										th:selected="${nacionalidade} == ${currentProfessor.nacionalidade}">
 									</option>
 								</select> <label>Nacionalidade</label>
 							</div>
@@ -117,7 +101,7 @@
 						<div class="row"></div>
 						<div class="col s4">
 							<button class="btn waves-effect waves-light" type="submit"
-								name="action">Cadastrar</button>
+								name="action">Atualizar</button>
 						</div>
 						<div class="row"></div>
 					</form>
@@ -127,10 +111,10 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-			$(document).ready(function() {
-				$('select').material_select();
-			});
-		</script>
+		$(document).ready(function() {
+			$('select').material_select();
+		});
+	</script>
 
 	<!-- /.container -->
 	<div th:replace="fragments/footer :: footer" />

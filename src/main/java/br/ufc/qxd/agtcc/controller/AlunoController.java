@@ -22,7 +22,6 @@ import br.ufc.qxd.agtcc.model.enums.Genero;
 import br.ufc.qxd.agtcc.model.enums.Nacionalidade;
 import br.ufc.qxd.agtcc.service.interfaces.IAlunoService;
 import br.ufc.qxd.agtcc.service.interfaces.ICursoService;
-import br.ufc.qxd.agtcc.service.interfaces.IUsuarioPapelService;
 
 @Controller
 @RequestMapping(path="/aluno/")
@@ -30,10 +29,7 @@ public class AlunoController {
 	
 	@Autowired
 	IAlunoService alunoService;
-	
-	@Autowired
-	IUsuarioPapelService usuarioPapelService;
-	
+		
 	@Autowired
 	ICursoService cursoService;
 	
@@ -48,7 +44,7 @@ public class AlunoController {
 	public 	String cadastrar(Model model){
 		Aluno aluno = new Aluno();
 		model.addAttribute("aluno", aluno);
-		model.addAttribute("papeis", usuarioPapelService.findAll());
+
 		model.addAttribute("cursos", cursoService.findAll());
 		model.addAttribute("generos", Genero.values());
 		model.addAttribute("nacionalidades", Nacionalidade.values());
@@ -59,7 +55,7 @@ public class AlunoController {
 
 	//Chamanda do botao cadastrar
 	@RequestMapping(path={"/cadastrar"}, method=RequestMethod.POST)
-	public String cadastrar_post(Aluno aluno,HttpServletRequest request, BindingResult result, RedirectAttributes attributes) throws ParseException{
+	public String cadastrar_post(Aluno aluno, HttpServletRequest request, BindingResult result, RedirectAttributes attributes) throws ParseException{
 		if (result.hasErrors()){
 			attributes.addAttribute("erro", result.getAllErrors().get(0));
 			return "redirect:/aluno/cadastrar";
@@ -72,6 +68,7 @@ public class AlunoController {
 		SimpleDateFormat formatOriginal = new SimpleDateFormat("yyyy-MM-dd");
 		Date dataNasc = formatOriginal.parse(data);
 		aluno.setDataDeNascimento(dataNasc);
+		
 		alunoService.save(aluno);
 		
 		attributes.addFlashAttribute("mensagemSucesso", "Aluno cadastrado com sucesso!");
@@ -84,7 +81,6 @@ public class AlunoController {
 	public 	String editar(@PathVariable("id") Long id, Model model){
 		model.addAttribute("currentAluno", alunoService.findOne(id));
 		model.addAttribute("cursos", cursoService.findAll());
-		model.addAttribute("papeis", usuarioPapelService.findAll());
 		model.addAttribute("generos", Genero.values());
 		model.addAttribute("nacionalidades", Nacionalidade.values());
 		model.addAttribute("formasDeTratamento", FormaTratamento.values());

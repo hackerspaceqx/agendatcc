@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+	<div class="container">
+		<div class="row white">
+					
+			<h5 class="black-text center">Professores</h5>
+			<table class="highlight " id="table-admin">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Forma De Tratamento</th>
+						<th>Nome</th>
+						<th>Sobrenome</th>
+						<th>Titulacao Academica</th>				
+						<th>CPF</th>			
+						<th>Opções</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="professor : ${professores}">
+						<td th:text="${professor.id}"></td>					
+						<td th:text="${professor.tratamento}"></td>
+						<td th:text="${professor.primeiroNome}"></td>
+						<td th:text="${professor.segundoNome}"></td>
+						<td th:text="${professor.titulacaoAcademica}"></td>
+						<td th:text="${professor.cpf}"></td>
+						<td><a class="btn-floating"
+							th:href="@{${'/professor/editar/'+professor.id}}"><i
+								class="material-icons">edit</i> </a> <a class="btn-floating"
+							th:href="@{${'/professor/remover/'+professor.id}}"><i
+								class="material-icons">delete</i> </a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="fixed-action-btn">
+		<a th:href="@{/professor/cadastrar}"
+			class="btn-floating btn-large waves-effect waves-light red pulse">
+			<i class="material-icons">add</i>
+		</a>
+	</div>
+<!-- /.container -->
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

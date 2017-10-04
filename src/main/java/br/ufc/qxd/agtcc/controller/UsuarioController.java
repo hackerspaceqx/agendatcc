@@ -12,17 +12,16 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufc.qxd.agtcc.model.entities.Usuario;
-import br.ufc.qxd.agtcc.service.interfaces.IUsuarioPapelService;
+import br.ufc.qxd.agtcc.model.enums.UsuarioPapel;
 import br.ufc.qxd.agtcc.service.interfaces.IUsuarioService;
+
+
 @Controller
 public class UsuarioController {
 
 	@Autowired
 	private IUsuarioService usuarioService;
 
-	@Autowired
-	private IUsuarioPapelService usuarioPapelService;
-	
 	
 //	Ainda iram ser realizadas auterações nos metodos desse controller
 	
@@ -42,7 +41,7 @@ public class UsuarioController {
 	public 	String cadastrar(Model model){
 		Usuario user = new Usuario();
 		model.addAttribute("usuario", user);
-		model.addAttribute("papeis", usuarioPapelService.findAll());
+		model.addAttribute("papeis", UsuarioPapel.values());
 		return "cadastrarUsuario";
 	}
 		
@@ -59,7 +58,7 @@ public class UsuarioController {
 	@RequestMapping(path="/editar/{id}", method=RequestMethod.GET)
 	public 	String editar(@PathVariable("id") Long id, Model model){
 		model.addAttribute("currentUser", usuarioService.findOne(id));
-		model.addAttribute("papeis", usuarioPapelService.findAll());
+		model.addAttribute("papeis", UsuarioPapel.values());
 		return "editarUsuario";
 	}
 	

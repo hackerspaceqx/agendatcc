@@ -40,7 +40,6 @@ public class Tcc implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusTcc status;
 
-
     @OneToOne
     private Defesa defesa;
 

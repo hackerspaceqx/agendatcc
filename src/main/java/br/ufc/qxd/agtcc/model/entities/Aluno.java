@@ -25,6 +25,7 @@ public class Aluno implements Serializable {
 	private String primeiroNome;
 
 	@Column
+	@NotNull
 	private String segundoNome;
 	
 	@Column
@@ -39,6 +40,7 @@ public class Aluno implements Serializable {
 	private List<String> telefones;
 	
 	@Column
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Nacionalidade nacionalidade;
 
@@ -59,10 +61,10 @@ public class Aluno implements Serializable {
 	@NotNull
 	private String orgaoExpedidor;
 
-	@Column(unique = true)
+	@Column(unique = true, nullable = false)
 	private String cpf;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	@NotNull
 	private String matricula;
 

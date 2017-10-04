@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Curso implements Serializable {
@@ -22,12 +23,14 @@ public class Curso implements Serializable {
 	private Long id;
 
 	@Column(unique = true, nullable = false)
+	@NotNull
 	private String nome;
 
 	@Column
 	private String descricao;
 
-	@Column
+	@Column(nullable = false)
+	@NotNull
 	private Double mediaDeAprovacao;
 
 	@ManyToMany
@@ -35,8 +38,6 @@ public class Curso implements Serializable {
 			@JoinColumn(name = "professor_id") })
 	private List<Professor> professores;
 
-//	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
-//	private Boolean ativo;
 	
 	public Curso() {}
 	
