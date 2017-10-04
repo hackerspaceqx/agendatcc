@@ -64,4 +64,9 @@ public class DefaultController {
 		return "redirect:/curso/";
 	}
 
+	@GetMapping("/tcc")
+	public String tcc(){
+		return "redirect:/tcc/";
+	}
+
 }

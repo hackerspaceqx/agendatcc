@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import br.ufc.qxd.agtcc.model.enums.StatusTcc;
 
@@ -30,6 +31,7 @@ public class Tcc implements Serializable {
     @CollectionTable(name = "tcc_palavraschaves")
     private List<String> palavrasChaves = new ArrayList<>();
 
+    @NotNull
     @OneToOne
     private Aluno aluno;
 
@@ -46,7 +48,6 @@ public class Tcc implements Serializable {
     @OneToMany
     private List<Documento> documentos;
 
-    @Column
     @OneToMany
     private List<Professor> bancaDeDefesa;
 

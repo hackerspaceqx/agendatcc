@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header" />
+
+	<div class="container">
+		<div class="row white">
+
+			<h5 class="black-text center">TCC</h5>
+			<table class="highlight " id="table-admin">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Titulo</th>
+						<th>Aluno</th>
+						<th>Orientador</th>
+						<th>Status</th>
+						<th>Opções</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="tcc : ${tccs}">
+						<td th:text="${tcc.id}"></td>
+						<td th:text="${tcc.titulo}"></td>
+						<td th:text="${tcc.aluno.primeiroNome + ' ' + tcc.aluno.segundoNome}"></td>
+						<td th:text="${tcc.orientador.primeiroNome + ' ' + tcc.orientador.segundoNome}"></td>
+						<td th:text="${tcc.status}"></td>					
+						<td>
+							<a class="btn-floating" th:href="@{${'/tcc/editar/'+tcc.id}}"> 
+								<i class="material-icons">edit</i>
+							</a> 
+							<a class="btn-floating" th:href="@{${'/tcc/remover/'+tcc.id}}">
+								<i class="material-icons">delete</i> 
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="fixed-action-btn">
+		<a th:href="@{/tcc/cadastrar}"
+			class="btn-floating btn-large waves-effect waves-light red pulse">
+			<i class="material-icons">add</i>
+		</a>
+	</div>
+	<!-- /.container -->
+	<div th:replace="fragments/footer :: footer" />
+
+</body>
+</html>
