@@ -11,6 +11,9 @@
 	<link type="text/css" rel="stylesheet"
 		th:href="@{/materialize/css/materialize.min.css}"
 		media="screen,projection" />
+	<link type="text/css" rel="stylesheet"
+		th:href="@{/css/style.css}"
+		media="screen,projection" />
 
 	<script type="text/javascript"
 		th:src="@{https://code.jquery.com/jquery-2.1.1.min.js}"></script>
@@ -23,14 +26,16 @@
 
 	<div th:fragment="header">
 		<!-- this is header -->
-		<nav class="black">
+		<header>
+		<nav class="light-blue lighten-1">
 
 			<div class="nav-wrapper">
-				<a th:href="@{/home}" class="brand-logo center"> <i
+				<a th:href="@{/home}" class="brand-logo center black-text"> <i
 					class="material-icons">class</i>Agenda TCC
 				</a>
 			</div>
 		</nav>
+		</header>
 	</div>
 
 

@@ -1,54 +1,75 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: header-css"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link
+	th:href="@{http://fonts.googleapis.com/icon?family=Material+Icons}"
+	rel="stylesheet" />
+<link type="text/css" rel="stylesheet"
+	th:href="@{/materialize/css/materialize.min.css}"
+	media="screen,projection" />
+<link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"
+	media="screen,projection" />
+
+<script type="text/javascript"
+	th:src="@{https://code.jquery.com/jquery-2.1.1.min.js}"></script>
+<script th:src="@{/materialize/js/materialize.min.js}"></script>
 </head>
 <body>
 
-<div th:replace="fragments/header :: header"/>
-
+	<div th:replace="fragments/header :: header" />
+	<main>
 	<div class="container">
-		<div class="row white">
-					
-			<h5 class="black-text center">Alunos</h5>
-			<table class="highlight " id="table-admin">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Nome</th>
-						<th>Sobrenome</th>
-						<th>Matricula</th>				
-						<th>CPF</th>		
-						<th>Data De Nasc.</th>		
-						<th>Opções</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="aluno : ${alunos}">
-						<td th:text="${aluno.id}"></td>
-						<td th:text="${aluno.primeiroNome}"></td>
-						<td th:text="${aluno.segundoNome}"></td>
-						<td th:text="${aluno.matricula}"></td>
-						<td th:text="${aluno.cpf}"></td>
-						<td th:text="${aluno.dataDeNascimento}"></td>
-						<td><a class="btn-floating"
-							th:href="@{${'/aluno/editar/'+aluno.id}}"><i
-								class="material-icons">edit</i> </a> <a class="btn-floating"
-							th:href="@{${'/aluno/remover/'+aluno.id}}"><i
-								class="material-icons">delete</i> </a></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="row">
+			<div class="card col s12 white z-depth-3">
+
+				<h5 class="black-text center">Alunos</h5>
+				<table class="highlight" id="table-admin">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nome</th>
+							<th>Sobrenome</th>
+							<th>Matricula</th>
+							<th>CPF</th>
+							<th>Data De Nasc.</th>
+							<th>Usuario</th>
+							<th>OpÃ§Ãµes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="aluno : ${alunos}">
+							<td th:text="${aluno.id}"></td>
+							<td th:text="${aluno.primeiroNome}"></td>
+							<td th:text="${aluno.segundoNome}"></td>
+							<td th:text="${aluno.matricula}"></td>
+							<td th:text="${aluno.cpf}"></td>
+							<td th:text="${aluno.dataDeNascimento}"></td>
+							<td th:text="${aluno.usuario.login}"></td>
+							<td><a class="btn-floating"
+								th:href="@{${'/aluno/editar/'+aluno.id}}"> <i
+									class="material-icons">edit</i>
+							</a> <a class="btn-floating"
+								th:href="@{${'/aluno/remover/'+aluno.id}}"> <i
+									class="material-icons">delete</i>
+							</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
+	</main>
 	<div class="fixed-action-btn">
 		<a th:href="@{/aluno/cadastrar}"
 			class="btn-floating btn-large waves-effect waves-light red pulse">
 			<i class="material-icons">add</i>
 		</a>
 	</div>
-<!-- /.container -->
-<div th:replace="fragments/footer :: footer"/>
+	<!-- /.container -->
+	<div th:replace="fragments/footer :: footer" />
 
 </body>
 </html>

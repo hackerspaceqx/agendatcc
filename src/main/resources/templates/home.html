@@ -10,32 +10,37 @@
 
 <div th:replace="fragments/header :: header"/>
 
-<div class="container">
-
-    <div class="starter-template">
-        <h1>Link para as paginas</h1>
-
-        <fieldset>
-        	<legend> Paginas do sistema</legend>                
-
-	        <h2><a th:href="@{/aluno}">Aluno</a></h2>
-   	        <h2><a th:href="@{/professor}">Professor</a></h2>
-	        <h2><a th:href="@{/curso}">Curso</a></h2>
-	        <h2><a th:href="@{/tcc}">Tcc</a></h2>
-	        <h2><a th:href="@{/defesa}">Defesa</a></h2>
-
-        </fieldset>
-
-
-        <fieldset>
-        	<legend> Paginas Teste</legend>
-	        <h2><a th:href="@{/admin}">Admin</a></h2>
-	        <h2><a th:href="@{/user}">Usuario</a></h2>
-	        <h2><a th:href="@{/about}">Normal</a></h2>
-        </fieldset>
-    </div>
-
-</div>
+<main>
+	<div class="container">
+	
+	    <div class="starter-template">
+	        <h1>Link para as paginas</h1>
+	
+	        <fieldset>
+	        	<legend> Paginas do sistema</legend>                
+	
+		        <h2><a th:href="@{/aluno}">Aluno</a></h2>
+	   	        <h2><a th:href="@{/professor}">Professor</a></h2>
+		        <h2><a th:href="@{/curso}">Curso</a></h2>
+		        <h2><a th:href="@{/tcc}">Tcc</a></h2>
+		        <h2><a th:href="@{/defesa}">Defesa</a></h2>
+		        <h2><a th:href="@{/usuario}">Usuario</a></h2>
+		        	
+	        </fieldset>
+	
+	
+	        <fieldset>
+	        	<legend> Paginas Teste</legend>
+		        <h2><a th:href="@{/admin}">Admin</a></h2>
+		        <h2><a th:href="@{/user}">Usuario</a></h2>
+		        <h2><a th:href="@{/about}">Normal</a></h2>	
+   		        <h2><a th:href="@{/login}">Login</a></h2>
+		        <h2><a th:href="@{/teste}">Teste Layout</a></h2>
+	        </fieldset>
+	    </div>
+	
+	</div>
+</main>
 <!-- /.container -->
 
 <div th:replace="fragments/footer :: footer"/>

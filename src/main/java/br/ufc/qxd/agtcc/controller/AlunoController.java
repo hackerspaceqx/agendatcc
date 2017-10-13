@@ -2,7 +2,9 @@ package br.ufc.qxd.agtcc.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import br.ufc.qxd.agtcc.model.entities.Aluno;
+import br.ufc.qxd.agtcc.model.entities.Usuario;
 import br.ufc.qxd.agtcc.model.enums.FormaTratamento;
 import br.ufc.qxd.agtcc.model.enums.Genero;
 import br.ufc.qxd.agtcc.model.enums.Nacionalidade;
@@ -99,8 +103,8 @@ public class AlunoController {
 		SimpleDateFormat formatOriginal = new SimpleDateFormat("yyyy-MM-dd");
 		Date dataNasc = formatOriginal.parse(data);
 		aluno.setDataDeNascimento(dataNasc);
-		
-		alunoService.save(aluno);
+				
+		alunoService.update(aluno);
 		attributes.addFlashAttribute("mensagemSucesso", "Aluno editado com sucesso!");
 		return "redirect:/aluno/";
 	}
@@ -119,8 +123,16 @@ public class AlunoController {
 	@RequestMapping(path="/listar", method=RequestMethod.GET)
 	public ModelAndView listar(){
 		ModelAndView model = new ModelAndView("tabs/aluno/listarAluno");
-		model.addObject("alunos", alunoService.findAll());
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		for(Aluno a : alunoService.findAll()) {
+			if(a.getUsuario() == null) {
+				a.setUsuario(new Usuario());
+			}
+			alunos.add(a);
+		}
+		model.addObject("alunos", alunos);
 		return model;
 	}
+	
 	
 }

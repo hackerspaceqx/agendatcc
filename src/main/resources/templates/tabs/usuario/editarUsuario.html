@@ -16,31 +16,24 @@
 			<div class="card col s10 white z-depth-3">
 				<fieldset>
 					<legend>
-						<h5 class="black-text">Editar Curso</h5>
+						<h5 class="black-text">Editar Usuario</h5>
 					</legend>
-					<form th:action="@{/curso/editar/}+${currentCurso.id}"
-						method="post" th:object="${curso}">
+					<form th:action="@{/usuario/editar/}+${currentUsuario.id}"
+						method="post" th:object="${usuario}">						
 						<div class="input-field col s12">
-							<input id="nome" type="text" name="nome" class="validate"
-								th:value="${currentCurso.nome}" /> <label for="nome"
-								data-error="Nome Incorreto" data-sucess="Nome correto">Nome</label>
-						</div>
-						<div class="input-field col s12">
-							<input id="mediaDeAprovacao" type="number" step="0.01" min="0"
-								max="10" name="mediaDeAprovacao" class="validate"
-								th:value="${currentCurso.mediaDeAprovacao}" /> <label
-								for="mediaDeAprovacao" data-error="Media Invalida"
-								data-sucess="Madia Valida">Media de Aprovação</label>
+							<input id="email" type="email" name="email" class="validate" th:value="${currentUsuario.email}" />
+							 <label for="email" data-error="E-mail Invalido" data-sucess="E-mail Valido">E-mail</label>
 						</div>
 
 						<div class="input-field col s12">
-							<textarea rows="5" cols="12" id="descricao" name="descricao"
-								class="materialize-textarea validate"
-								th:field="${currentCurso.descricao}"></textarea>
-							<label for="descricao" data-error="Descrição Invalida"
-								data-sucess="Descrição Valida">Descrição</label>
+							<input id="login" type="text" name="login" class="validate" th:value="${currentUsuario.login}"/>
+							 <label for="login" data-error="Login Invalido" data-sucess="login Valido">Login</label>
 						</div>
 
+						<div class="input-field col s12">
+							<input id="password" type="password" name="password" class="validate" th:value="${currentUsuario.password}"/>
+							 <label for="password" data-error="Senha Invalido" data-sucess="Senha Valido">Senha</label>
+						</div>
 
 						<div class="col s4">
 							<button class="btn waves-effect waves-light" type="submit"

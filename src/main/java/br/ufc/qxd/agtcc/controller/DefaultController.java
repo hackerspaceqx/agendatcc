@@ -74,4 +74,10 @@ public class DefaultController {
 		return "redirect:/defesa/";
 	}
 	
+	@GetMapping("/usuario")
+	public String usuario(){
+		return "redirect:/usuario/";
+	}
+	
+	
 }

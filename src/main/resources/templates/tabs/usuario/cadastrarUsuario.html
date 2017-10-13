@@ -18,26 +18,30 @@
 
 				<fieldset>
 					<legend>
-						<h5 class="black-text">Cadastrar Defesa</h5>
+						<h5 class="black-text">Cadastrar usuario</h5>
 					</legend>
-					<form action="/defesa/cadastrar" method="post">
+					<form action="/usuario/cadastrar" method="post" th:object="${usuario}">
+			
 
 						<div class="input-field col s12">
-							<input id="nomeDoLocal" type="text" name="nomeDoLocal" class="validate" /> <label
-								for="nomeDoLocal" data-error="Local Invalido" data-sucess="Local Valido">Local</label>
+							<input id="cfp" type="number" name="cpf" class="validate" />
+							 <label for="cpf" data-error="CPF Invalido" data-sucess="CPF Valido">CPF</label>
+						</div>
+						
+						<div class="input-field col s12">
+							<input id="email" type="email" name="email" class="validate" />
+							 <label for="email" data-error="E-mail Invalido" data-sucess="E-mail Valido">E-mail</label>
 						</div>
 
 						<div class="input-field col s12">
-							<input id="dataDefesa" type="date" name="dataDefesa" class="validate" /> <label
-								for="dataDefesa" data-error="Data Invalida" data-sucess="Data Valida">Data</label>
+							<input id="login" type="text" name="login" class="validate" />
+							 <label for="login" data-error="Login Invalido" data-sucess="login Valido">Login</label>
 						</div>
 
 						<div class="input-field col s12">
-							<input id="horaDefesa" type="time" name="horaDefesa" class="validate" /> <label
-								for="horaDefesa" data-error="Hora Invalida" data-sucess="Hora Valida">Hora</label>
+							<input id="password" type="password" name="password" class="validate" />
+							 <label for="password" data-error="Senha Invalido" data-sucess="Senha Valido">Senha</label>
 						</div>
-
-
 
 						<div class="input-field col s12"></div>
 

@@ -7,37 +7,39 @@
 
 	<div th:replace="fragments/header :: header" />
 
+	<main>
 	<div class="container">
-		<div class="row white">
+		<div class="row">
+			<div class="card col s12 white z-depth-3">
 
-			<h5 class="black-text center">Defesas</h5>
-			<table class="highlight " id="table-admin">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Local</th>
-						<th>Data</th>
-						<th>Horário</th>
-						<th>Opções</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="defesa : ${defesas}">
-						<td th:text="${defesa.id}"></td>
-						<td th:text="${defesa.nomeDoLocal}"></td>
-						<td th:text="${defesa.dataDefesa}"></td>
-						<td th:text="${defesa.horaDefesa}"></td>
-						<td>
-							<a class="btn-floating" th:href="@{${'/defesa/editar/'+defesa.id}}"> 
-								<i class="material-icons">edit</i>
-							</a> 
-							<a class="btn-floating" th:href="@{${'/defesa/remover/'+defesa.id}}">
-								<i class="material-icons">delete</i> 
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+				<h5 class="black-text center">Defesas</h5>
+				<table class="highlight " id="table-admin">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Local</th>
+							<th>Data</th>
+							<th>Horário</th>
+							<th>Opções</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="defesa : ${defesas}">
+							<td th:text="${defesa.id}"></td>
+							<td th:text="${defesa.nomeDoLocal}"></td>
+							<td th:text="${defesa.dataDefesa}"></td>
+							<td th:text="${defesa.horaDefesa}"></td>
+							<td><a class="btn-floating"
+								th:href="@{${'/defesa/editar/'+defesa.id}}"> <i
+									class="material-icons">edit</i>
+							</a> <a class="btn-floating"
+								th:href="@{${'/defesa/remover/'+defesa.id}}"> <i
+									class="material-icons">delete</i>
+							</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 	<div class="fixed-action-btn">
@@ -46,7 +48,7 @@
 			<i class="material-icons">add</i>
 		</a>
 	</div>
-	<!-- /.container -->
+	<!-- /.container --> </main>
 	<div th:replace="fragments/footer :: footer" />
 
 </body>

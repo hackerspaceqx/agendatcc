@@ -12,28 +12,28 @@
 		<div class="row">
 			<div class="card col s12 white z-depth-3">
 
-				<h5 class="black-text center">Cursos</h5>
+				<h5 class="black-text center">Usuario</h5>
 				<table class="highlight " id="table-admin">
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Nome</th>
-							<th>Media de Aprovação</th>
-							<th>Descrição</th>
+							<th>Usuario</th>
+							<th>Tipo</th>
+							<th>Email</th>
 							<th>Opções</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="curso : ${cursos}">
-							<td th:text="${curso.id}"></td>
-							<td th:text="${curso.nome}"></td>
-							<td th:text="${curso.mediaDeAprovacao}"></td>
-							<td th:text="${curso.descricao}"></td>
+						<tr th:each="usuario : ${usuarios}">
+							<td th:text="${usuario.id}"></td>
+							<td th:text="${usuario.login}"></td>
+							<td th:text="${usuario.papel}"></td>
+							<td th:text="${usuario.email}"></td>
 							<td><a class="btn-floating"
-								th:href="@{${'/curso/editar/'+curso.id}}"> <i
+								th:href="@{${'/usuario/editar/'+usuario.id}}"> <i
 									class="material-icons">edit</i>
 							</a> <a class="btn-floating"
-								th:href="@{${'/curso/remover/'+curso.id}}"> <i
+								th:href="@{${'/usuario/remover/'+usuario.id}}"> <i
 									class="material-icons">delete</i>
 							</a></td>
 						</tr>
@@ -43,7 +43,7 @@
 		</div>
 	</div>
 	<div class="fixed-action-btn">
-		<a th:href="@{/curso/cadastrar}"
+		<a th:href="@{/usuario/cadastrar}"
 			class="btn-floating btn-large waves-effect waves-light red pulse">
 			<i class="material-icons">add</i>
 		</a>

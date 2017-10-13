@@ -7,43 +7,43 @@
 
 	<div th:replace="fragments/header :: header" />
 
+	<main>
 	<div class="container">
-		<div class="row white">
+		<div class="row">
+			<div class="card col s12 white z-depth-3">
 
-			<h5 class="black-text center">TCC</h5>
-			<table class="highlight " id="table-admin">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Titulo</th>
-						<th>Aluno</th>
-						<th>Orientador</th>
-						<th>Status</th>
-						<th>Opções</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="tcc : ${tccs}">
-						<td th:text="${tcc.id}"></td>
-						<td th:text="${tcc.titulo}"></td>
-						<td th:text="${tcc.aluno.primeiroNome + ' ' + tcc.aluno.segundoNome}"></td>
-						<td th:text="${tcc.orientador.primeiroNome + ' ' + tcc.orientador.segundoNome}"></td>
-						<td th:text="${tcc.status}"></td>					
-						<td>
-							<a class="btn-floating" th:href="@{${'/tcc/'+tcc.id}}">
-								<i class="material-icons">swap_vertical_circle</i>
-							</a>
-						
-							<a class="btn-floating" th:href="@{${'/tcc/editar/'+tcc.id}}"> 
-								<i class="material-icons">edit</i>
-							</a> 
-							<a class="btn-floating" th:href="@{${'/tcc/remover/'+tcc.id}}">
-								<i class="material-icons">delete</i> 
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+				<h5 class="black-text center">TCC</h5>
+				<table class="highlight " id="table-admin">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Titulo</th>
+							<th>Aluno</th>
+							<th>Orientador</th>
+							<th>Status</th>
+							<th>Opções</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="tcc : ${tccs}">
+							<td th:text="${tcc.id}"></td>
+							<td th:text="${tcc.titulo}"></td>
+							<td
+								th:text="${tcc.aluno.primeiroNome + ' ' + tcc.aluno.segundoNome}"></td>
+							<td
+								th:text="${tcc.orientador.primeiroNome + ' ' + tcc.orientador.segundoNome}"></td>
+							<td th:text="${tcc.status}"></td>
+							<td><a class="btn-floating" th:href="@{${'/tcc/'+tcc.id}}">
+									<i class="material-icons">swap_vertical_circle</i>
+							</a> <a class="btn-floating" th:href="@{${'/tcc/editar/'+tcc.id}}">
+									<i class="material-icons">edit</i>
+							</a> <a class="btn-floating" th:href="@{${'/tcc/remover/'+tcc.id}}">
+									<i class="material-icons">delete</i>
+							</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 	<div class="fixed-action-btn">
@@ -52,7 +52,8 @@
 			<i class="material-icons">add</i>
 		</a>
 	</div>
-	<!-- /.container -->
+	<!-- /.container --> </main>
+
 	<div th:replace="fragments/footer :: footer" />
 
 </body>

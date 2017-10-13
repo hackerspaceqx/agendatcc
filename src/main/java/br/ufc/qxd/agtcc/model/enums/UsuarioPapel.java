@@ -4,7 +4,11 @@ package br.ufc.qxd.agtcc.model.enums;
 public enum UsuarioPapel {
 
 	USER("user"),
-	ADMIN("admin");
+	ADMIN("admin"),
+	ALUNO("aluno"),
+	ORIENTADOR("orientador"),
+	COORDENACAO("coordenacao"),
+	SECREATARIA("secretaria");
 
 	private String descricao;
 
