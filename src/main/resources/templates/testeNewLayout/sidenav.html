@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+</head>
+<body>
+	<div th:fragment="sidenav">
+
+
+		<ul id="slide-out" class="side-nav fixed menu">
+			<li><div class="user-view">
+					<div class="background light-blue lighten-1">
+						<!--<img class="responsive-img" src="images/fundo-user.jpg">-->
+					</div>
+					<a href="#!user"><img class="circle"
+						th:src="@{/images/user.png}" /></a> <a href="#!name"><span
+						class="white-text name">John Doe</span></a>
+				</div></li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li><a class="collapsible-header waves-effect">Aluno<i
+							class="material-icons">arrow_drop_down</i></a>
+						<div class="collapsible-body">
+							<ul>
+								<li><a href="#!">Listar</a></li>
+								<li><a href="#!">Cadastrar</a></li>
+								<li><a href="#!">Alterar</a></li>
+								<li><a href="#!">Deletar</a></li>
+							</ul>
+						</div></li>
+				</ul>
+			</li>
+			<li><div class="divider"></div></li>
+
+			<!--   -->
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li><a class="collapsible-header waves-effect">Professor<i
+							class="material-icons">arrow_drop_down</i></a>
+						<div class="collapsible-body">
+							<ul>
+								<li><a href="#!">Listar</a></li>
+								<li><a href="#!">Cadastrar</a></li>
+								<li><a href="#!">Alterar</a></li>
+								<li><a href="#!">Deletar</a></li>
+							</ul>
+						</div></li>
+				</ul>
+			</li>
+			<li><div class="divider"></div></li>
+
+		<!--   -->
+		
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li><a class="collapsible-header waves-effect">Curso<i
+							class="material-icons">arrow_drop_down</i></a>
+						<div class="collapsible-body">
+							<ul>
+								<li><a href="#!">Listar</a></li>
+								<li><a href="#!">Cadastrar</a></li>
+								<li><a href="#!">Alterar</a></li>
+								<li><a href="#!">Deletar</a></li>
+							</ul>
+						</div></li>
+				</ul>
+			</li>
+			<li><div class="divider"></div></li>
+
+		<!--   -->
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li><a class="collapsible-header waves-effect">Tcc<i
+							class="material-icons">arrow_drop_down</i></a>
+						<div class="collapsible-body">
+							<ul>
+								<li><a href="#!">Listar</a></li>
+								<li><a href="#!">Cadastrar</a></li>
+								<li><a href="#!">Alterar</a></li>
+								<li><a href="#!">Deletar</a></li>
+							</ul>
+						</div></li>
+				</ul>
+			</li>
+			<li><div class="divider"></div></li>
+
+
+
+		</ul>
+
+	</div>
+</body>
+</html>

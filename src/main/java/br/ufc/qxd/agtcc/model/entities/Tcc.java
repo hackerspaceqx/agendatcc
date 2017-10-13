@@ -48,7 +48,7 @@ public class Tcc implements Serializable {
     @OneToMany
     private List<Documento> documentos;
 
-    @OneToMany
+    @ManyToMany
     private List<Professor> bancaDeDefesa;
 
     public Tcc() {}
@@ -131,6 +131,14 @@ public class Tcc implements Serializable {
 
     public void setBancaDeDefesa(List<Professor> bancaDeDefesa) {
         this.bancaDeDefesa = bancaDeDefesa;
+    }
+    
+    public void addProfessorBancaDeDefesa(Professor professorBanca) {
+    	this.bancaDeDefesa.add(professorBanca);
+    }
+
+    public void removeProfessorBancaDeDefesa(Professor professorBanca) {
+    	this.bancaDeDefesa.remove(professorBanca);
     }
 
     @Override

@@ -1,5 +1,8 @@
 package br.ufc.qxd.agtcc.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.ufc.qxd.agtcc.model.entities.Professor;
 import br.ufc.qxd.agtcc.model.entities.Tcc;
 import br.ufc.qxd.agtcc.model.enums.StatusTcc;
 import br.ufc.qxd.agtcc.service.interfaces.IAlunoService;
 import br.ufc.qxd.agtcc.service.interfaces.IProfessorService;
 import br.ufc.qxd.agtcc.service.interfaces.ITccService;
+
 
 @Controller
 @RequestMapping(path="/tcc/")
@@ -98,5 +103,43 @@ public class TccController {
 		model.addObject("tccs", tccService.findAll());
 		return model;
 	}
+		
+	@RequestMapping(path="/{id}")
+	public ModelAndView locacoes(@PathVariable("id") Long id){
+		ModelAndView model = new ModelAndView("tabs/tcc/alocarDesalocarBanca");
+		Tcc tcc = tccService.findOne(id);
+		List<Professor> professoresAll = professorService.findAll();
+		List<Professor> professoresNotAloc = null;
+		for (Professor prof: professoresAll) {
+			if(!tcc.getBancaDeDefesa().contains(prof)){
+				if(professoresNotAloc == null){
+					professoresNotAloc = new ArrayList<Professor>();
+				}
+				professoresNotAloc.add(prof);
+			}
+		}
+		model.addObject("professoresAll", professoresNotAloc);
+		model.addObject("tcc", tcc);
+		return model;
+	}	
+
+	
+	@RequestMapping(path="/{idTcc}/alocarBanca/{idProfessor}", method=RequestMethod.GET)
+	public String alocarAluno(@PathVariable("idTcc") Long idTcc, 
+							  @PathVariable("idProfessor") Long idProfessor){
+		tccService.alocarProfessor(idTcc, idProfessor);
+		return "redirect:/tcc/"+idTcc;
+	}
+	
+	@RequestMapping(path="/{idTcc}/desalocarBanca/{idProfessor}", method=RequestMethod.GET)
+	public String desalocarAluno(@PathVariable("idTcc") Long idTcc, 
+			@PathVariable("idProfessor") Long idProfessor){
+		
+		tccService.desalocarProfessor(idTcc, idProfessor);
+		
+		return "redirect:/tcc/"+idTcc;
+	}
+
+	
 	
 }

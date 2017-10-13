@@ -3,13 +3,11 @@ package br.ufc.qxd.agtcc.model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,10 +20,6 @@ public class DataDeDefesa implements Serializable {
 	@GeneratedValue
 	private Long id;
 	
-	@Column
-	@OneToMany
-	private List<Professor> orientadores;
-
 //	@OneToMany
 //	private List<Matricula> matriculas;
 
@@ -46,22 +40,6 @@ public class DataDeDefesa implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public List<Professor> getOrientadores() {
-		return orientadores;
-	}
-
-	public void setOrientadores(List<Professor> orientadores) {
-		this.orientadores = orientadores;
-	}
-
-//	public List<Matricula> getMatriculas() {
-//		return matriculas;
-//	}
-//
-//	public void setMatriculas(List<Matricula> matriculas) {
-//		this.matriculas = matriculas;
-//	}
 
 	public Date getHoraSugerida() {
 		return horaSugerida;
@@ -86,8 +64,6 @@ public class DataDeDefesa implements Serializable {
 		result = prime * result + ((dataSugerida == null) ? 0 : dataSugerida.hashCode());
 		result = prime * result + ((horaSugerida == null) ? 0 : horaSugerida.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-//		result = prime * result + ((matriculas == null) ? 0 : matriculas.hashCode());
-		result = prime * result + ((orientadores == null) ? 0 : orientadores.hashCode());
 		return result;
 	}
 
@@ -114,16 +90,6 @@ public class DataDeDefesa implements Serializable {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-//		if (matriculas == null) {
-//			if (other.matriculas != null)
-//				return false;
-//		} else if (!matriculas.equals(other.matriculas))
-//			return false;
-		if (orientadores == null) {
-			if (other.orientadores != null)
-				return false;
-		} else if (!orientadores.equals(other.orientadores))
 			return false;
 		return true;
 	}

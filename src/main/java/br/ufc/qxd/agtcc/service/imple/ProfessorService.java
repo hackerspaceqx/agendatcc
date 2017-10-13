@@ -39,5 +39,7 @@ public class ProfessorService implements IProfessorService {
 	public Professor findOne(Long id) {
 		return professorRepository.findOne(id);
 	}
+	
+	
 
 }

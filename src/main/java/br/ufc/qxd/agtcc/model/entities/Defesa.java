@@ -21,7 +21,7 @@ public class Defesa implements Serializable {
 	private Long id;
 
     @Column
-	private String nomeDolocal;
+	private String nomeDoLocal;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_defesa")
@@ -42,11 +42,11 @@ public class Defesa implements Serializable {
 	}
 
 	public String getNomeDolocal() {
-		return nomeDolocal;
+		return nomeDoLocal;
 	}
 
-	public void setNomeDolocal(String nomeDolocal) {
-		this.nomeDolocal = nomeDolocal;
+	public void setNomeDolocal(String nomeDoLocal) {
+		this.nomeDoLocal = nomeDoLocal;
 	}
 
 	public Date getDataDefesa() {
@@ -76,7 +76,7 @@ public class Defesa implements Serializable {
 		result = prime * result + ((dataDefesa == null) ? 0 : dataDefesa.hashCode());
 		result = prime * result + ((horaDefesa == null) ? 0 : horaDefesa.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nomeDolocal == null) ? 0 : nomeDolocal.hashCode());
+		result = prime * result + ((nomeDoLocal == null) ? 0 : nomeDoLocal.hashCode());
 		return result;
 	}
 
@@ -104,10 +104,10 @@ public class Defesa implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nomeDolocal == null) {
-			if (other.nomeDolocal != null)
+		if (nomeDoLocal == null) {
+			if (other.nomeDoLocal != null)
 				return false;
-		} else if (!nomeDolocal.equals(other.nomeDolocal))
+		} else if (!nomeDoLocal.equals(other.nomeDoLocal))
 			return false;
 		return true;
 	}

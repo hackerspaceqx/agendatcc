@@ -10,34 +10,28 @@
 	<div class="container">
 		<div class="row white">
 
-			<h5 class="black-text center">TCC</h5>
+			<h5 class="black-text center">Defesas</h5>
 			<table class="highlight " id="table-admin">
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Titulo</th>
-						<th>Aluno</th>
-						<th>Orientador</th>
-						<th>Status</th>
+						<th>Local</th>
+						<th>Data</th>
+						<th>Horário</th>
 						<th>Opções</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="tcc : ${tccs}">
-						<td th:text="${tcc.id}"></td>
-						<td th:text="${tcc.titulo}"></td>
-						<td th:text="${tcc.aluno.primeiroNome + ' ' + tcc.aluno.segundoNome}"></td>
-						<td th:text="${tcc.orientador.primeiroNome + ' ' + tcc.orientador.segundoNome}"></td>
-						<td th:text="${tcc.status}"></td>					
+					<tr th:each="defesa : ${defesas}">
+						<td th:text="${defesa.id}"></td>
+						<td th:text="${defesa.nomeDoLocal}"></td>
+						<td th:text="${defesa.dataDefesa}"></td>
+						<td th:text="${defesa.horaDefesa}"></td>
 						<td>
-							<a class="btn-floating" th:href="@{${'/tcc/'+tcc.id}}">
-								<i class="material-icons">swap_vertical_circle</i>
-							</a>
-						
-							<a class="btn-floating" th:href="@{${'/tcc/editar/'+tcc.id}}"> 
+							<a class="btn-floating" th:href="@{${'/defesa/editar/'+defesa.id}}"> 
 								<i class="material-icons">edit</i>
 							</a> 
-							<a class="btn-floating" th:href="@{${'/tcc/remover/'+tcc.id}}">
+							<a class="btn-floating" th:href="@{${'/defesa/remover/'+defesa.id}}">
 								<i class="material-icons">delete</i> 
 							</a>
 						</td>
@@ -47,7 +41,7 @@
 		</div>
 	</div>
 	<div class="fixed-action-btn">
-		<a th:href="@{/tcc/cadastrar}"
+		<a th:href="@{/defesa/cadastrar}"
 			class="btn-floating btn-large waves-effect waves-light red pulse">
 			<i class="material-icons">add</i>
 		</a>

@@ -37,9 +37,9 @@ public class DefaultController {
 		return "/login";
 	}
 
-	@GetMapping("/register")
+	@GetMapping("/teste")
 	public String register() {
-		return "/register";
+		return "/testeNewLayout/conteudo";
 	}
 
 	@GetMapping("/403")
@@ -69,4 +69,9 @@ public class DefaultController {
 		return "redirect:/tcc/";
 	}
 
+	@GetMapping("/defesa")
+	public String defesa(){
+		return "redirect:/defesa/";
+	}
+	
 }

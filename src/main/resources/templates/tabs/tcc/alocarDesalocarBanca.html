@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header" />
+
+	<div class="container">
+		<div class="row white">
+
+			<h5 class="black-text center">TCC</h5>
+			<table class="highlight " id="table-admin">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Titulo</th>
+						<th>Aluno</th>
+						<th>Orientador</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td th:text="${tcc.id}"></td>
+						<td th:text="${tcc.titulo}"></td>
+						<td
+							th:text="${tcc.aluno.primeiroNome + ' ' + tcc.aluno.segundoNome}"></td>
+						<td
+							th:text="${tcc.orientador.primeiroNome + ' ' + tcc.orientador.segundoNome}"></td>
+						<td th:text="${tcc.status}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="row">
+			<div class="card col s6">
+				<h5>Professores</h5>
+				<table class="striped">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Titulação Academica</th>
+							<th>Opções</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="professor : ${professoresAll}">
+							<td
+								th:text="${professor.primeiroNome + ' ' + professor.segundoNome}"></td>
+							<td th:text="${professor.titulacaoAcademica}"></td>
+							<td><a class="btn-floating"
+								th:href="@{${'/tcc/'+tcc.id+'/alocarBanca/'+professor.id}}">
+									<i class="material-icons">fast_forward</i>
+							</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="card col s6">
+				<h5>Banca de Defesa</h5>
+				<table class="striped">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Titulação Academica</th>
+							<th>Opções</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="professorAloc : ${tcc.bancaDeDefesa}">
+							<td
+								th:text="${professorAloc.primeiroNome + ' ' + professorAloc.segundoNome}"></td>
+							<td th:text="${professorAloc.titulacaoAcademica}"></td>
+							<td><a class="btn-floating"
+								th:href="@{${'/tcc/'+tcc.id+'/desalocarBanca/'+professorAloc.id}}">
+									<i class="material-icons">fast_rewind</i>
+							</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<!-- /.container -->
+	<div th:replace="fragments/footer :: footer" />
+
+</body>
+</html>

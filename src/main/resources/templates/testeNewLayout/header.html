@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<div th:fragment="header-css">
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link
+		th:href="@{http://fonts.googleapis.com/icon?family=Material+Icons}"
+		rel="stylesheet" />
+	<link type="text/css" rel="stylesheet"
+		th:href="@{/materialize/css/materialize.min.css}"
+		media="screen,projection" />
+
+	<script type="text/javascript"
+		th:src="@{https://code.jquery.com/jquery-2.1.1.min.js}"></script>
+	<script th:src="@{/materialize/js/materialize.min.js}"></script>
+
+</div>
+</head>
+<body>
+
+
+
+	<div th:fragment="header">
+		<!-- this is header -->
+		<header>
+           <nav class="light-blue lighten-1" role="navigation">
+               <div class="nav-wrapper">
+                   <a href="#" class="brand-logo center"> SiAT </a>
+                   <ul id="nav-mobile" class="left">
+                       <li>
+                           <a href="#!" data-activates="slide-out" class="button-collapse hide-on-large-only">
+                               <i class="material-icons">menu</i>
+                           </a>
+                       </li>
+                   </ul>
+               </div>
+           </nav>
+       </header>
+	</div>
+
+
+
+
+
+
+</body>
+</html>

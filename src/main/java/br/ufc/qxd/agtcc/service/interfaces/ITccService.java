@@ -17,4 +17,8 @@ public interface ITccService {
 
 	public Tcc findOne(Long id);
 	
+	public void alocarProfessor(Long idTcc,Long idProfessor);
+	
+	public void desalocarProfessor(Long idTcc,Long idProfessor);
+	
 }
